@@ -9,24 +9,24 @@ package com.mycompany.agenciagli;
  * @author ET36
  */
 public class Apartamento extends Hospedaje  {
-    private int monoAmbientes;
+    private int ambientes;
     private boolean piscina;
 
-    public Apartamento(int monoAmbientes, boolean piscina, int habitacion, int capacidad, double precio) {
+    public Apartamento(int ambientes, boolean piscina, int habitacion, int capacidad, double precio) {
         super(habitacion, capacidad, precio);
-        this.monoAmbientes = monoAmbientes;
+        this.ambientes = ambientes;
         this.piscina = piscina;
     }
 
-    public int getMonoAmbientes() {
-        return monoAmbientes;
+    public int getAmbientes() {
+        return ambientes;
     }
 
-    public void setMonoAmbientes(int monoAmbientes) {
-        this.monoAmbientes = monoAmbientes;
+    public void setAmbientes(int monoAmbientes) {
+        this.ambientes = ambientes;
     }
 
-    public boolean isPiscina() {
+    public boolean getPiscina() {
         return piscina;
     }
 
@@ -59,6 +59,23 @@ public class Apartamento extends Hospedaje  {
     }
     
     public double calcularPrecio(){
-        return  0;
+        if(this.ambientes>=1){
+            this.precio+=30000;
+            
+        }
+        else{
+            if(this.ambientes>=3){
+                this.precio+=60000;
+                
+   
+            }
+        }
+        
+        if(this.piscina){
+          this.precio+=10000;
+            
+        }
+        
+        return  this.getPrecio();
     }
 }

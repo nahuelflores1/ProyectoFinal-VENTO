@@ -9,24 +9,24 @@ package com.mycompany.agenciagli;
  * @author ET36
  */
 public class Hotel extends Hospedaje {
-    private String valoracion;
+    private int valoracion;
     private boolean piscina;
 
-    public Hotel(String valoracion, boolean piscina, int habitacion, int capacidad, double precio) {
+    public Hotel(int valoracion, boolean piscina, int habitacion, int capacidad, double precio) {
         super(habitacion, capacidad, precio);
         this.valoracion = valoracion;
         this.piscina = piscina;
     }
 
-    public String getValoracion() {
+    public int getValoracion() {
         return valoracion;
     }
 
-    public void setValoracion(String valoracion) {
+    public void setValoracion(int valoracion) {
         this.valoracion = valoracion;
     }
 
-    public boolean isPiscina() {
+    public boolean getPiscina() {
         return piscina;
     }
 
@@ -61,7 +61,26 @@ public class Hotel extends Hospedaje {
     
     
     public double calcularPrecio(){
-        return 0;
+        
+        if(this.valoracion>=1){
+            this.precio+=15000;
+        }
+       if(this.valoracion>=2){
+           this.precio+=20000;
+           
+       }
+       if(this.valoracion>=3){
+           this.precio+=30000;
+       }
+       if(this.valoracion>=4){
+           this.precio+=40000;
+       }
+       if(this.valoracion>=5){
+           this.precio+=50000;
+       }
+        
+        
+        return this.precio;
     }
     
 }

@@ -9,19 +9,19 @@ package com.mycompany.agenciagli;
  * @author ET36
  */
 public class Avion extends Transporte {
-    private String clase;
+    private boolean primeraClase;
 
-    public Avion(String clase, int cantAscientos, int idTransporte, double precio) {
-        super(cantAscientos, idTransporte, precio);
-        this.clase = clase;
+    public Avion(boolean primeraClase, int cantAscientos, int idTransporte, double precio,Ubicacion ubi) {
+        super(cantAscientos, idTransporte, precio,ubi);
+        this.primeraClase = primeraClase;
     }
 
-    public String getClase() {
-        return clase;
+    public boolean getPrimeraClase() {
+        return primeraClase;
     }
 
-    public void setClase(String clase) {
-        this.clase = clase;
+    public void setPrimeraClase(boolean primeraClase) {
+        this.primeraClase = primeraClase;
     }
 
     public int getCantAscientos() {
@@ -48,8 +48,34 @@ public class Avion extends Transporte {
         this.precio = precio;
     }
 
+    public Ubicacion getUbi() {
+        return ubi;
+    }
+
+    public void setUbi(Ubicacion ubi) {
+        this.ubi = ubi;
+    }
+    
+
    public double calcularPrecio(){
-       return 0;
+      
+if(primeraClase){
+            this.precio+=100000;
+        }
+        if(this.ubi.getDistancia()<=100){// se calcula el precio mediante los kilometros
+            this.precio+=60000;
+        }
+        else{
+            if(this.ubi.getDistancia()<=1000){
+            this.precio+=100000;
+            }
+            else{
+                this.precio+=180000;
+            }    
+            
+    
+    }
+        return this.precio;
    }
     
 }

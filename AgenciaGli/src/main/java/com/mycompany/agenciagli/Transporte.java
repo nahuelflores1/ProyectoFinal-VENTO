@@ -13,11 +13,13 @@ public abstract  class Transporte {
    protected int cantAscientos;
    protected int idTransporte;
    protected double precio;
+   protected Ubicacion ubi;
 
-    public Transporte(int cantAscientos, int idTransporte, double precio) {
+    public Transporte(int cantAscientos, int idTransporte, double precio, Ubicacion ubi) {
         this.cantAscientos = cantAscientos;
         this.idTransporte = idTransporte;
         this.precio = precio;
+        this.ubi=ubi;
     }
 
     public int getCantAscientos() {
@@ -43,12 +45,19 @@ public abstract  class Transporte {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    public Ubicacion getUbi() {
+        return ubi;
+    }
+
+    public void setUbi(Ubicacion ubi) {
+        this.ubi = ubi;
+    }
+    
  
-   public double calcularPrecio(){
+   public abstract double calcularPrecio();
        
-       return 0;
-       
-   }
+      
    
    
    

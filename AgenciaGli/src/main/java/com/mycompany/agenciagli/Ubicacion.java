@@ -11,12 +11,14 @@ package com.mycompany.agenciagli;
 public class Ubicacion {
     private String origen;
     private String destino ;
-    private double precio;
+    private int distancia;
+    
 
-    public Ubicacion(String origen, String destino, double precio) {
+    public Ubicacion(String origen, String destino,int distancia) {
         this.origen = origen;
         this.destino = destino;
-        this.precio = precio;
+        this.distancia=distancia;
+        
     }
 
     public String getOrigen() {
@@ -35,17 +37,14 @@ public class Ubicacion {
         this.destino = destino;
     }
 
-    public double getPrecio() {
-        return precio;
+    public void setDistancia(int distancia){
+        this.distancia=distancia;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
+public int getDistancia(){
+  
+    return this.distancia;
+}
     
-    public String calcularTramo(){
-        
-        return null;
-        
-    }
+
 }

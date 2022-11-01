@@ -10,10 +10,12 @@ package com.mycompany.agenciagli;
  */
 public class Micro extends Transporte {
     private boolean cocheCama;
-
-    public Micro(boolean cocheCama, int cantAscientos, int idTransporte, double precio) {
-        super(cantAscientos, idTransporte, precio);
+    
+    
+    public Micro(boolean cocheCama, int cantAscientos, int idTransporte, double precio,Ubicacion ubi) {
+        super(cantAscientos, idTransporte, precio,ubi);
         this.cocheCama = cocheCama;
+        
     }
 
     public boolean isCocheCama() {
@@ -47,8 +49,35 @@ public class Micro extends Transporte {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
-    public double calcularPrecio(){
-        return 0;
+
+    public Ubicacion getUbi() {
+        return ubi;
     }
+
+    public void setUbi(Ubicacion ubi) {
+        this.ubi = ubi;
+    }
+    
+    
+    public double calcularPrecio(){//1
+     
+     if(cocheCama){
+            this.precio+=9000;
+        }
+        if(this.ubi.getDistancia()<=100){// se calcula el precio mediante los kilometros
+            this.precio+=15000;
+        }
+        else{
+            if(this.ubi.getDistancia()<=1000){
+            this.precio+=25000;
+            }
+            else{
+                this.precio+=35000;
+            }    
+            
+    
+    }
+        return this.precio;   
+        
+    }//1
 }
