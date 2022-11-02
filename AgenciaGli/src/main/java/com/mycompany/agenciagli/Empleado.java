@@ -12,10 +12,12 @@ public class Empleado {
     private String nombre;
     private String apellido;
     private  int sueldo=70000;
+    private Paquete paquete;
 
-    public Empleado(String nombre, String apellido) {
+    public Empleado(String nombre, String apellido,Paquete paquete) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.paquete=paquete;
     }
 
     public String getNombre() {
@@ -43,9 +45,11 @@ public class Empleado {
     }
 
 public double calcularComision(){
+    double total = 0;
     
-   
-        return 0;
+    double desc = (this.paquete.calcularTotal()*100)/2;
+    total=desc + this.sueldo;
+        return total;
     
 }
 

@@ -55,7 +55,7 @@ public abstract  class Transporte {
     }
     
  
-   public abstract double calcularPrecio();
+   public abstract double calcularPrecioT();
        
       
    

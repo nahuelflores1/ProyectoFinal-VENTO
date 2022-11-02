@@ -58,7 +58,12 @@ public class Tren extends Transporte {
     }
     
 
-    public double calcularPrecio() {//se calcula el precio si es coche cama
+    public double calcularPrecioT() {//se calcula el precio si es coche cama
+        int p =this.cantAscientos*1000;
+        this.precio+=p;
+        
+        
+        
         if(primeraClase){
             this.precio+=6000;
         }

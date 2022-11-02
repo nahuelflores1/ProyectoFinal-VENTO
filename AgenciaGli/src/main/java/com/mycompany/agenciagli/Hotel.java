@@ -60,7 +60,7 @@ public class Hotel extends Hospedaje {
     
     
     
-    public double calcularPrecio(){
+    public double calcularPrecioH(){
         
         if(this.valoracion>=1){
             this.precio+=15000;

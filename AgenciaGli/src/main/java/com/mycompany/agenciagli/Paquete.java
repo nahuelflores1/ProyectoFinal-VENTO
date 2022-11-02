@@ -66,6 +66,18 @@ public class Paquete {
     }
     
    public double calcularTotal(){
-       return 0;
+       double precioP=0;
+       precioP=this.trans.calcularPrecioT()+this.hogar.calcularPrecioH();
+       if(this.lugar.getDestino().equalsIgnoreCase("bariloche")){
+           precioP+=50000;
+       }
+      else if(this.lugar.getDestino().equalsIgnoreCase("jujuy")){
+           precioP+=40000;
+       }
+      else if(this.lugar.getDestino().equalsIgnoreCase("tierra del fuego")){
+           precioP+=60000;
+       }
+  
+       return precioP;
    }
 }

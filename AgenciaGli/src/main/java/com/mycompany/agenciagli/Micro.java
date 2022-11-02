@@ -59,7 +59,10 @@ public class Micro extends Transporte {
     }
     
     
-    public double calcularPrecio(){//1
+    public double calcularPrecioT(){//1
+        int p =this.cantAscientos*1000;
+        this.precio+=p;
+        
      
      if(cocheCama){
             this.precio+=9000;

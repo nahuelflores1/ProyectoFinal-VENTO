@@ -43,11 +43,11 @@ public abstract class Hospedaje  {
         this.precio = precio;
     }
  
-    public double calcularPrecio(){
+    public abstract double calcularPrecioH();
         
-        return 0;
         
-    }
+        
+    
     
     
     

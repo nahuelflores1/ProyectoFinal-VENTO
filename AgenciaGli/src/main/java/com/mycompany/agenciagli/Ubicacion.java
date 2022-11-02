@@ -9,13 +9,12 @@ package com.mycompany.agenciagli;
  * @author ET36
  */
 public class Ubicacion {
-    private String origen;
+    private String origen="Buenos Aires";
     private String destino ;
     private int distancia;
     
 
-    public Ubicacion(String origen, String destino,int distancia) {
-        this.origen = origen;
+    public Ubicacion(String destino,int distancia) {
         this.destino = destino;
         this.distancia=distancia;
         
@@ -25,9 +24,7 @@ public class Ubicacion {
         return origen;
     }
 
-    public void setOrigen(String origen) {
-        this.origen = origen;
-    }
+
 
     public String getDestino() {
         return destino;

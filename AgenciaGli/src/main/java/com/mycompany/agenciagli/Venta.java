@@ -60,12 +60,19 @@ public class Venta {
         this.nroFact = nroFact;
     }
 
+    @Override
+    public String toString() {
+        String dest = "";
+        for(Paquete p:this.paquete){
+            dest = p.getLugar().getDestino();
+        }
+        return  "Fecha:" + this.fecha + "\n Nro de Factura:" + this.nroFact + "\n Destino:"+ dest ;
+    }
 
-public double calcularPago(){
+
+
     
-        return 0;
-    
-}
+
     
     
     

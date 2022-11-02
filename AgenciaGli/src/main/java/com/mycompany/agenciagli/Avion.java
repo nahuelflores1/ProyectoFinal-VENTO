@@ -57,8 +57,10 @@ public class Avion extends Transporte {
     }
     
 
-   public double calcularPrecio(){
-      
+   public double calcularPrecioT(){
+      int p =this.cantAscientos*1000;
+      this.precio+=p;
+        
 if(primeraClase){
             this.precio+=100000;
         }
@@ -75,6 +77,7 @@ if(primeraClase){
             
     
     }
+        
         return this.precio;
    }
     
