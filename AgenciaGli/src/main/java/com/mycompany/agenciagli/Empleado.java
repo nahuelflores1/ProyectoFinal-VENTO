@@ -43,7 +43,7 @@ public class Empleado {
     }
 
 public double calcularComision(){
-    double total=0;
+    
    
         return 0;
     

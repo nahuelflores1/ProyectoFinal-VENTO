@@ -49,7 +49,16 @@ public class Hostel extends Hospedaje  {
     }
     
     public double calcularPrecio(){
-        return 0;
+        if(this.cantCamas>=1){
+            this.precio+=4000;
+        }
+        else{
+            if(this.cantCamas>=2){
+                this.precio+=6000;
+                }
+        }
+                    
+        return this.precio;
     }
     
     
