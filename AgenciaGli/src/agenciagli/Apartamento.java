@@ -59,23 +59,24 @@ public class Apartamento extends Hospedaje  {
     }
     
     public double calcularPrecioH(){
+        double precioH = this.precio;
         if(this.ambientes>=1){
-            this.precio+=30000;
+            precioH+=30000;
             
         }
       
         if(this.ambientes>=3){
-                this.precio+=60000;
+                precioH+=60000;
                 
    
             }
        
         
         if(this.piscina){
-          this.precio+=10000;
+          precioH+=10000;
             
         }
         
-        return  this.getPrecio();
+        return  precioH;
     }
 }

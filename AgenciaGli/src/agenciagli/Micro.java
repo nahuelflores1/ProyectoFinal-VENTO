@@ -61,26 +61,27 @@ public class Micro extends Transporte {
     
     public double calcularPrecioT(){//1
         int p =this.cantAscientos*1000;
-        this.precio+=p;
+        double precioT = this.precio;
+        precioT+=p;
         
      
      if(cocheCama){
-            this.precio+=9000;
+            precioT+=9000;
         }
         if(this.ubi.getDistancia()<=100){// se calcula el precio mediante los kilometros
-            this.precio+=15000;
+            precioT+=15000;
         }
         else{
             if(this.ubi.getDistancia()<=1000){
-            this.precio+=25000;
+            precioT+=25000;
             }
             else{
-                this.precio+=35000;
+                precioT+=35000;
             }    
             
     
     }
-        return this.precio;   
+        return precioT;   
         
     }//1
 }

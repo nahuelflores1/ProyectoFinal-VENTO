@@ -60,27 +60,23 @@ public class Tren extends Transporte {
 
     public double calcularPrecioT() {//se calcula el precio si es coche cama
         int p =this.cantAscientos*1000;
-        this.precio+=p;
-        
-        
-        
+        double precioT = this.precio;
+        precioT+=p;
         if(primeraClase){
-            this.precio+=6000;
+            precioT+=6000;
         }
         if(this.ubi.getDistancia()<=100){// se calcula el precio mediante los kilometros
-            this.precio+=5000;
+            precioT+=5000;
         }
         else{
             if(this.ubi.getDistancia()<=1000){
-            this.precio+=20000;
+            precioT+=20000;
             }
             else{
-                this.precio+=30000;
-            }    
-            
-    
+                precioT+=30000;
+            }
     }
-        return this.precio;
+        return precioT;
     }
 
 }

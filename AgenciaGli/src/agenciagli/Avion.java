@@ -59,26 +59,23 @@ public class Avion extends Transporte {
 
    public double calcularPrecioT(){
       int p =this.cantAscientos*1000;
-      this.precio+=p;
+      double precioT = this.precio;
+      precioT+=p;
         
 if(primeraClase){
-            this.precio+=100000;
+            precioT+=100000;
         }
         if(this.ubi.getDistancia()<=100){// se calcula el precio mediante los kilometros
-            this.precio+=60000;
+            precioT+=60000;
         }
         else{
             if(this.ubi.getDistancia()<=1000){
-            this.precio+=100000;
+            precioT+=100000;
             }
             else{
-                this.precio+=180000;
-            }    
-            
-    
-    }
-        
-        return this.precio;
+                precioT+=180000;
+            }
+        }
+        return precioT;
    }
-    
 }

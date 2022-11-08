@@ -45,14 +45,17 @@ public class Empleado {
     }
 
 public double calcularComision(){
-    double total = 0;
-    
-    double desc = (this.paquete.calcularTotal()*100)/2;
-    total=desc + this.sueldo;
-        return total;
+    double desc = (this.paquete.calcularTotal()/100)*2;
+        return desc;
     
 }
-
+public double sueldoTotal(){
+    double total = 0;
+    double sueldoE = this.sueldo;
+    double desc = this.calcularComision();
+    total=desc + sueldoE;
+    return total;
+}
 }
 
 

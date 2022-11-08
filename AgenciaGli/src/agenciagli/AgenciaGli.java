@@ -9,28 +9,43 @@ public class AgenciaGli {
         Scanner entrada = new Scanner(System.in);
         boolean loop = true;
         int fact = 1;
+        int bar = 0;
+        int TDF = 0;
+        int jj = 0;
+        double Cemple1 = 0;
+        double Cemple2 = 0;
+        double Cemple3 = 0;
         double precioTotal= 0;
         String tS="";
         String rta = "";
         LocalDate fecha=LocalDate.of(2022,07,12);
         ArrayList<Paquete>p=new ArrayList();
+        Cliente cliente =new Cliente("","",0,0);
+        Ubicacion u =new Ubicacion("",0); 
         while(true){
             System.out.println("Has ingresado a agencia Gli");
-            Cliente cliente = crearCli();
+            cliente = crearCli();
+            loop = true;
             while(loop == true){
                 Transporte t = selTrans();
                 Hospedaje h = selHos();
                 Paquete paquete=new Paquete(1000,t.getUbi(),t,h);
-
+                p.add(paquete);
+                if(paquete.getLugar().getDestino().equalsIgnoreCase("bariloche")){
+                    bar++;
+                }
+                else if(paquete.getLugar().getDestino().equalsIgnoreCase("jujuy")){
+                    jj++;
+                }
+                else if(paquete.getLugar().getDestino().equalsIgnoreCase("tierra del fuego")){
+                    TDF++;
+                }
                 Empleado emple1=new Empleado("Uriel","Ludi",paquete );
                 Empleado emple2=new Empleado("Joaco","Preisinger",paquete );
                 Empleado emple3=new Empleado("Francisco","Tato",paquete );
-
-                p.add(paquete);
                 Venta v = new Venta(cliente,emple1,fecha,fact,p);
                 tS = v.toString();
                 System.out.println(tS);
-                precioTotal =precioTotal-precioTotal+v.getPaq();
                 fact++;
                 System.out.println("Quiere comprar otro paquete?");
                 rta = entrada.next();
@@ -40,9 +55,16 @@ public class AgenciaGli {
                 else if(rta.equalsIgnoreCase("no")){
                     loop = false;
                 }
+                Cemple1 = emple1.calcularComision();
+                Cemple2 = emple2.calcularComision();
+                Cemple3 = emple3.calcularComision();
+                precioTotal=v.calcularPv();
+                System.out.println("las comisiones que ganaron los empleados son: \n Apellido:"+emple1.getApellido()+"      ganancia en comision:"+Cemple1+ "\n Apellido:"+emple2.getApellido()+"      ganancia en comision:"+Cemple2+ "\n Apellido:"+emple3.getApellido()+"      ganancia en comision:"+Cemple3);
             }
             System.out.println("Precio de todos los paquetes juntos:"+precioTotal);
+            System.out.println("Cantidad de veces que un paquete fue comprado: \n Bariloche:"+bar+"\n Jujuy:"+jj+"\n Tierra del Fuego:"+TDF);
             System.out.println("-----------------------------------");
+            p.clear();
         } 
     }
     
@@ -78,7 +100,6 @@ public class AgenciaGli {
             destino="Jujuy";
             distancia=1515;
         }
-    
         else if(opc==3){
             destino="Tierra del Fuego";
             distancia=3026;
@@ -98,7 +119,7 @@ public class AgenciaGli {
        Ubicacion ubi = selUbi();
        Transporte t = new Avion(true,0,0,0,ubi);
        
-        System.out.println("Elija Transporte \n1.Avion  \n 2.Micro \n 3.Tren");
+        System.out.println("Elija Transporte \n 1.Avion  \n 2.Micro \n 3.Tren");
         int opc=entrada.nextInt();
         System.out.println("Elija la cantidad de asientos");
         int a = entrada.nextInt();

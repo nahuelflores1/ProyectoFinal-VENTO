@@ -51,10 +51,13 @@ public class Venta {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    public double getPaq(){
+    public double calcularPv(){
         double precio = 0;
         for(Paquete p:this.paquete){
-            precio = p.calcularTotal();
+            System.out.println(p.calcularTotal());
+            System.out.println(precio);
+            precio += p.calcularTotal();
+            System.out.println(precio);
         }
         return precio;
     }
@@ -74,6 +77,14 @@ public class Venta {
             precio = p.calcularTotal();
         }
         return  "Fecha:" + this.fecha + "\n Nro de Factura:" + this.nroFact + "\n Destino:"+ dest +"\n Precio:"+ precio;
+    }
+
+    public double totalComisiones(){
+        double com = 0;
+        for(Paquete p:this.paquete){
+            com+=this.emple.calcularComision();
+        }
+        return com;
     }
 }
 

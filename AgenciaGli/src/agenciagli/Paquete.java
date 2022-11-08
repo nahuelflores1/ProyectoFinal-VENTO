@@ -76,7 +76,6 @@ public class Paquete {
       else if(this.lugar.getDestino().equalsIgnoreCase("tierra del fuego")){
            precioP+=60000;
        }
-  
        return precioP;
    }
 }
