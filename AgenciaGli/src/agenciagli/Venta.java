@@ -54,10 +54,7 @@ public class Venta {
     public double calcularPv(){
         double precio = 0;
         for(Paquete p:this.paquete){
-            System.out.println(p.calcularTotal());
-            System.out.println(precio);
             precio += p.calcularTotal();
-            System.out.println(precio);
         }
         return precio;
     }

@@ -12,16 +12,17 @@ import java.time.LocalDate;
  */
 public class Paquete {
     private double precio;
-    private LocalDate fecha=LocalDate.now();
+    private LocalDate fecha;
     private Ubicacion lugar;
     private Transporte trans;
     private Hospedaje hogar;
 
-    public Paquete(double precio, Ubicacion lugar, Transporte trans, Hospedaje hogar) {
+    public Paquete(double precio, Ubicacion lugar, Transporte trans, Hospedaje hogar,LocalDate fecha) {
         this.precio = precio;
         this.lugar = lugar;
         this.trans = trans;
         this.hogar = hogar;
+        this.fecha = fecha;
     }
 
     public double getPrecio() {

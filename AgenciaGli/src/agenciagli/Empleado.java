@@ -11,7 +11,7 @@ package agenciagli;
 public class Empleado {
     private String nombre;
     private String apellido;
-    private  int sueldo=70000;
+    private  double sueldo=70000;
     private Paquete paquete;
 
     public Empleado(String nombre, String apellido,Paquete paquete) {
@@ -36,7 +36,7 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public int getSueldo() {
+    public double getSueldo() {
         return sueldo;
     }
 

@@ -8,17 +8,27 @@ public class AgenciaGli {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         boolean loop = true;
+        
         int fact = 1;
         int bar = 0;
         int TDF = 0;
         int jj = 0;
+        int dado = (int) Math.floor(Math.random()*3+1);
         double Cemple1 = 0;
         double Cemple2 = 0;
         double Cemple3 = 0;
+        double STemple1 = 0;
+        double STemple2 = 0;
+        double STemple3 = 0;
         double precioTotal= 0;
+        double totalInv=0;
         String tS="";
         String rta = "";
-        LocalDate fecha=LocalDate.of(2022,07,12);
+        LocalDate origenI=LocalDate.of(2022,04,4);
+        LocalDate finI=LocalDate.of(2022, 07, 31);
+        Venta v=null;
+        
+        
         ArrayList<Paquete>p=new ArrayList();
         Cliente cliente =new Cliente("","",0,0);
         Ubicacion u =new Ubicacion("",0); 
@@ -29,7 +39,15 @@ public class AgenciaGli {
             while(loop == true){
                 Transporte t = selTrans();
                 Hospedaje h = selHos();
-                Paquete paquete=new Paquete(1000,t.getUbi(),t,h);
+                System.out.println("Ingrese fecha:");
+                System.out.println("Año:");
+                int a=entrada.nextInt();
+                System.out.println("Mes:");
+                int m=entrada.nextInt();
+                System.out.println("dia:");
+                int d=entrada.nextInt();
+                LocalDate fecha=LocalDate.of(a, m, d);
+                Paquete paquete=new Paquete(1000,t.getUbi(),t,h,fecha);
                 p.add(paquete);
                 if(paquete.getLugar().getDestino().equalsIgnoreCase("bariloche")){
                     bar++;
@@ -43,7 +61,15 @@ public class AgenciaGli {
                 Empleado emple1=new Empleado("Uriel","Ludi",paquete );
                 Empleado emple2=new Empleado("Joaco","Preisinger",paquete );
                 Empleado emple3=new Empleado("Francisco","Tato",paquete );
-                Venta v = new Venta(cliente,emple1,fecha,fact,p);
+                if(dado == 1){
+                    v = new Venta(cliente,emple1,fecha,fact,p);
+                }
+                else if(dado == 2){
+                    v = new Venta(cliente,emple2,fecha,fact,p);
+                }
+                else if(dado == 3){
+                    v = new Venta(cliente,emple3,fecha,fact,p);
+                }
                 tS = v.toString();
                 System.out.println(tS);
                 fact++;
@@ -55,17 +81,37 @@ public class AgenciaGli {
                 else if(rta.equalsIgnoreCase("no")){
                     loop = false;
                 }
-                Cemple1 = emple1.calcularComision();
-                Cemple2 = emple2.calcularComision();
-                Cemple3 = emple3.calcularComision();
+                if(v.getEmple().getApellido().equalsIgnoreCase("ludi")){
+                    Cemple1 = v.getEmple().calcularComision();
+                    STemple1 = v.getEmple().sueldoTotal();
+                }
+                else if(v.getEmple().getApellido().equalsIgnoreCase("preisinger")){
+                    Cemple2 = v.getEmple().calcularComision();
+                    STemple2 = v.getEmple().sueldoTotal();
+                }
+                else if(v.getEmple().getApellido().equalsIgnoreCase("tato")){
+                    Cemple3 = v.getEmple().calcularComision();
+                    STemple3 = v.getEmple().sueldoTotal();
+                }
                 precioTotal=v.calcularPv();
-                System.out.println("las comisiones que ganaron los empleados son: \n Apellido:"+emple1.getApellido()+"      ganancia en comision:"+Cemple1+ "\n Apellido:"+emple2.getApellido()+"      ganancia en comision:"+Cemple2+ "\n Apellido:"+emple3.getApellido()+"      ganancia en comision:"+Cemple3);
+                System.out.println("--------------------------------------------");
+                System.out.println("las comisiones que ganaron los empleados son: \n Nombre:"+emple1.getNombre()+" "+emple1.getApellido()+"      ganancia en comision:"+Cemple1+ "\n Nombre:"+emple2.getNombre()+" "+emple2.getApellido()+"      ganancia en comision:"+Cemple2+ "\n Nombre:"+emple3.getNombre()+" "+emple3.getApellido()+"      ganancia en comision:"+Cemple3);
+                System.out.println("--------------------------------------------");
+                System.out.println("Sueldo total de los empleados: \nApellido:"+emple1.getApellido()+"Total Neto:"+ STemple1+"\nApellido:"+emple2.getApellido()+"Total Neto:"+ STemple2+"\nApellido:"+emple3.getApellido()+"Total Neto:"+ STemple3);
             }
+            System.out.println("------------------------------------------------");
             System.out.println("Precio de todos los paquetes juntos:"+precioTotal);
             System.out.println("Cantidad de veces que un paquete fue comprado: \n Bariloche:"+bar+"\n Jujuy:"+jj+"\n Tierra del Fuego:"+TDF);
-            System.out.println("-----------------------------------");
+            System.out.println("-------------------------------------------------");
+            totalInv=calcularTotI(origenI,finI,v);
+            System.out.println("Total vendido en Invierno; "+totalInv );
+            System.out.println("Gracias por comprar en AgenciaGli");
+            System.out.println("------------------------------------------------");
+            
             p.clear();
         } 
+         
+             
     }
     
     public static Cliente crearCli(){
@@ -208,5 +254,17 @@ public class AgenciaGli {
             h=new Hostel(cam,12,cap,1000);
         }
         return h;
+    }
+
+    private static double calcularTotI(LocalDate origenI, LocalDate finI, Venta v) {
+      double totalR=0;
+      
+     // si la fecha de la venta  es mayor a origen y menor a fin acumulo su total
+     
+          if((v.getFecha().compareTo(origenI)>0) && (v.getFecha().compareTo(finI)<0)){
+              totalR += v.calcularPv();
+          }
+      
+      return totalR;
     }
 }
