@@ -8,16 +8,16 @@ package agenciagli;
  *
  * @author ET36
  */
-public class Hotel extends Hospedaje {
+public class Hotel extends Hospedaje {//Hecho por Flores
     private int valoracion;
     private boolean piscina;
-
+    //Constructor
     public Hotel(int valoracion, boolean piscina, int habitacion, int capacidad, double precio) {
         super(habitacion, capacidad, precio);
         this.valoracion = valoracion;
         this.piscina = piscina;
     }
-
+    //Getters & Setters
     public int getValoracion() {
         return valoracion;
     }
@@ -59,7 +59,7 @@ public class Hotel extends Hospedaje {
     }
     
     
-    
+    //Calculamos el precio del apartamento para despues sumarlo en calcularTotal (que esta en paquete)
     public double calcularPrecioH(){
         double precioH = this.precio;
         if(this.valoracion>=1){

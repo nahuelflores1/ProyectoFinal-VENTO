@@ -8,16 +8,17 @@ package agenciagli;
  *
  * @author ET36
  */
-public class Apartamento extends Hospedaje  {
+public class Apartamento extends Hospedaje  {//Hecho por Flores
     private int ambientes;
     private boolean piscina;
-
+    //Constructor
     public Apartamento(int ambientes, boolean piscina, int habitacion, int capacidad, double precio) {
         super(habitacion, capacidad, precio);
         this.ambientes = ambientes;
         this.piscina = piscina;
     }
-
+    
+    //Getters & Setters
     public int getAmbientes() {
         return ambientes;
     }
@@ -57,7 +58,7 @@ public class Apartamento extends Hospedaje  {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+    //Calculamos el precio del apartamento para despues sumarlo en calcularTotal (que esta en paquete)
     public double calcularPrecioH(){
         double precioH = this.precio;
         if(this.ambientes>=1){

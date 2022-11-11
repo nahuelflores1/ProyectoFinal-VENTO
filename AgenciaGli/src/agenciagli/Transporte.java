@@ -9,19 +9,19 @@ package agenciagli;
  *
  * @author ET36
  */
-public abstract  class Transporte {
+public abstract  class Transporte {//Hecho por Tato
    protected int cantAscientos;
    protected int idTransporte;
    protected double precio;
    protected Ubicacion ubi;
-
+   //constructor
     public Transporte(int cantAscientos, int idTransporte, double precio, Ubicacion ubi) {
         this.cantAscientos = cantAscientos;
         this.idTransporte = idTransporte;
         this.precio = precio;
         this.ubi=ubi;
     }
-
+    // aca los getters y los setters
     public int getCantAscientos() {
         return cantAscientos;
     }
@@ -54,7 +54,7 @@ public abstract  class Transporte {
         this.ubi = ubi;
     }
     
- 
+    //aca calculamos el precio de los transportes para despues sumarlo en calcularTotal (que esta en paquete)
    public abstract double calcularPrecioT();
        
       

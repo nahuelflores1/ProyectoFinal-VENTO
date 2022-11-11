@@ -8,16 +8,16 @@ package agenciagli;
  *
  * @author ET36
  */
-public class Micro extends Transporte {
+public class Micro extends Transporte {//Hecho por Tato
     private boolean cocheCama;
     
-    
+    //Aca el constructor
     public Micro(boolean cocheCama, int cantAscientos, int idTransporte, double precio,Ubicacion ubi) {
         super(cantAscientos, idTransporte, precio,ubi);
         this.cocheCama = cocheCama;
         
     }
-
+    //Aca los Setters y los Getters
     public boolean isCocheCama() {
         return cocheCama;
     }
@@ -58,7 +58,7 @@ public class Micro extends Transporte {
         this.ubi = ubi;
     }
     
-    
+    //aca calculamos el precio de los transportes para despues sumarlo en calcularTotal (que esta en paquete)
     public double calcularPrecioT(){//1
         int p =this.cantAscientos*1000;
         double precioT = this.precio;

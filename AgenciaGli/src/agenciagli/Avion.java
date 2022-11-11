@@ -8,14 +8,14 @@ package agenciagli;
  *
  * @author ET36
  */
-public class Avion extends Transporte {
+public class Avion extends Transporte {//Hecho por Tato
     private boolean primeraClase;
-
+    //Aca hacemos el constructor
     public Avion(boolean primeraClase, int cantAscientos, int idTransporte, double precio,Ubicacion ubi) {
         super(cantAscientos, idTransporte, precio,ubi);
         this.primeraClase = primeraClase;
     }
-
+    //Aca ponemos los Getters y los Setters
     public boolean getPrimeraClase() {
         return primeraClase;
     }
@@ -56,7 +56,7 @@ public class Avion extends Transporte {
         this.ubi = ubi;
     }
     
-
+    //aca calculamos el precio de los transportes para despues sumarlo en calcularTotal (que esta en paquete)
    public double calcularPrecioT(){
       int p =this.cantAscientos*1000;
       double precioT = this.precio;

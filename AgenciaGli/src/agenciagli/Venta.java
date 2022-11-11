@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author ET36
  */
-public class Venta {
+public class Venta {//Hecho por Preisinger
     private Cliente cli;
     private Empleado emple;
     private LocalDate fecha;

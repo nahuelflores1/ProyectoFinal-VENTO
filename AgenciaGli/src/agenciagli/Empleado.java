@@ -8,7 +8,7 @@ package agenciagli;
  *
  * @author ET36
  */
-public class Empleado {
+public class Empleado {//Hecho por Preisinger
     private String nombre;
     private String apellido;
     private  double sueldo=70000;

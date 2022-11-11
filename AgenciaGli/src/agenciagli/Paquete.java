@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package agenciagli;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author ET36
- */
-public class Paquete {
+public class Paquete {//Hecho por Ludi
     private double precio;
     private LocalDate fecha;
     private Ubicacion lugar;
     private Transporte trans;
     private Hospedaje hogar;
-
+    //Constructor de Paquete 
     public Paquete(double precio, LocalDate fecha, Ubicacion lugar, Transporte trans, Hospedaje hogar) {
         this.precio = precio;
         this.lugar = lugar;
@@ -24,7 +16,8 @@ public class Paquete {
         this.hogar = hogar;
         this.fecha = fecha;
     }
-
+    
+    //Getters and Setters
     public double getPrecio() {
         return precio;
     }
@@ -65,9 +58,11 @@ public class Paquete {
         this.hogar = hogar;
     }
     
+    //Calculamosel total del paquete con los calcularPrecio de Transporte y Hospedaje
    public double calcularTotal(){
        double precioP=0;
-       precioP=this.trans.calcularPrecioT()+this.hogar.calcularPrecioH();
+       precioP=this.trans.calcularPrecioT()+this.hogar.calcularPrecioH();//sumamos los precios de los transportes y hospedajes
+       //Dependiendo de a donde elija ir se leagregara un precio o otro 
        if(this.lugar.getDestino().equalsIgnoreCase("bariloche")){
            precioP+=50000;
        }

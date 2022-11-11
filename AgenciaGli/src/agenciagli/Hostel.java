@@ -8,14 +8,14 @@ package agenciagli;
  *
  * @author ET36
  */
-public class Hostel extends Hospedaje  {
+public class Hostel extends Hospedaje  {//Hecho por Flores
     private int cantCamas;
-
+    //Cosntructor
     public Hostel(int cantCamas, int habitacion, int capacidad, double precio) {
         super(habitacion, capacidad, precio);
         this.cantCamas = cantCamas;
     }
-
+    //Getters & Setters
     public int getCantCamas() {
         return cantCamas;
     }
@@ -47,7 +47,7 @@ public class Hostel extends Hospedaje  {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+    //Calculamos el precio del apartamento para despues sumarlo en calcularTotal (que esta en paquete)
     public double calcularPrecioH(){
         double precioH = this.precio;
         if(this.cantCamas>=1){

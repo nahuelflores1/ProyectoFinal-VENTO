@@ -8,17 +8,17 @@ package agenciagli;
  *
  * @author ET36
  */
-public abstract class Hospedaje  {
+public abstract class Hospedaje  {//Hecho por Flores
     protected int habitacion;
     protected int capacidad;
     protected double precio;
-
+    //Constructor
     public Hospedaje(int habitacion, int capacidad, double precio) {
         this.habitacion = habitacion;
         this.capacidad = capacidad;
         this.precio = precio;
     }
-
+    //Getters & Setters
     public int getHabitacion() {
         return habitacion;
     }
@@ -42,7 +42,8 @@ public abstract class Hospedaje  {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
- 
+    
+    //Calculamos el precio del apartamento para despues sumarlo en calcularTotal (que esta en paquete)
     public abstract double calcularPrecioH();
         
         

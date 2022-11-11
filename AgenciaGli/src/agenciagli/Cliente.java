@@ -8,7 +8,7 @@ package agenciagli;
  *
  * @author ET36
  */
-public class Cliente {
+public class Cliente {//hecho por Preisinger
     private String nombre;
     private String apellido;
     private int dni;

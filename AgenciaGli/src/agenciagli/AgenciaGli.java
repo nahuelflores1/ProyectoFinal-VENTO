@@ -4,16 +4,15 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class AgenciaGli {
+public class AgenciaGli {//Hecho por Ludi
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         boolean loop = true;
-        
         int fact = 1;
         int bar = 0;
         int TDF = 0;
         int jj = 0;
-        int dado = (int) Math.floor(Math.random()*3+1);
+        int dado = (int) Math.floor(Math.random()*4+1);
         double Cemple1 = 0;
         double Cemple2 = 0;
         double Cemple3 = 0;
@@ -59,6 +58,7 @@ public class AgenciaGli {
                 Empleado emple1=new Empleado("Uriel","Ludi",paquete );
                 Empleado emple2=new Empleado("Joaco","Preisinger",paquete );
                 Empleado emple3=new Empleado("Francisco","Tato",paquete );
+                Empleado emple4=new Empleado("Nahuel","Flores",paquete);
                 if(dado == 1){
                     v = new Venta(cliente,emple1,fecha,fact,p);
                 }
@@ -67,6 +67,9 @@ public class AgenciaGli {
                 }
                 else if(dado == 3){
                     v = new Venta(cliente,emple3,fecha,fact,p);
+                }
+                else if(dado==4){
+                    v = new Venta(cliente,emple4,fecha,fact,p);
                 }
                 tS = v.toString();
                 System.out.println(tS);
@@ -106,7 +109,7 @@ public class AgenciaGli {
             System.out.println("Gracias por comprar en AgenciaGli");
             System.out.println("------------------------------------------------");
             
-            p.clear();
+            p.clear();//vaciamos el array de paquete para la siguiente compra
         } 
          
              
@@ -136,6 +139,11 @@ public class AgenciaGli {
         int distancia=0;
         System.out.println("Elija un Paquete \n 1.Bariloche \n 2.Jujuy \n 3. Tierra del Fuego");
         int opc = entrada.nextInt();
+        while(opc<=0 || opc>3){
+            System.out.println("---Eleccion no valida---");
+            System.out.println("Elija un Paquete \n 1.Bariloche \n 2.Jujuy \n 3. Tierra del Fuego");
+            opc = entrada.nextInt();
+        }
         if(opc==1){
             destino="Bariloche";
             distancia=1575;
@@ -165,10 +173,15 @@ public class AgenciaGli {
        
         System.out.println("Elija Transporte \n 1.Avion  \n 2.Micro \n 3.Tren");
         int opc=entrada.nextInt();
+        while(opc<=0 || opc>3){
+            System.out.println("---Eleccion no valida---");
+            System.out.println("Elija Transporte \n 1.Avion  \n 2.Micro \n 3.Tren");
+            opc=entrada.nextInt();
+        }
         System.out.println("Elija la cantidad de asientos");
         int a = entrada.nextInt();
         if(opc==1){
-            System.out.println("¿Quiere priemera clase?");
+            System.out.println("¿Quiere priemera clase? si/no");
             rta =entrada.next();
             if(rta.equalsIgnoreCase("si")){
                 clase= true;
@@ -179,7 +192,7 @@ public class AgenciaGli {
             t= new Avion(clase,a,8164619,60000,ubi);
         }
         else if(opc==2){
-            System.out.println("¿Quiere coche cama?");
+            System.out.println("¿Quiere coche cama? si/no");
             rta =entrada.next();
             if(rta.equalsIgnoreCase("si")){
                 clase= true;
@@ -190,7 +203,7 @@ public class AgenciaGli {
             t= new Micro(clase,a,4535488,30000,ubi);
         }
         else if(opc==3){
-            System.out.println("¿Quiere priemera clase?");
+            System.out.println("¿Quiere priemera clase? si/no");
             rta =entrada.next();
             if(rta.equalsIgnoreCase("si")){
                 clase= true;
@@ -217,12 +230,22 @@ public class AgenciaGli {
      Hospedaje h = new Hotel(0,false,0,0,0);
         System.out.println("En cual instancia quiere estar? \n1.Hotel \n2.Apartamento\n3.Hostel ");
         int opc= entrada.nextInt();
+        while(opc<=0 || opc>3){
+            System.out.println("---Eleccion no valida---");
+            System.out.println("En cual instancia quiere estar? \n1.Hotel \n2.Apartamento\n3.Hostel ");
+            opc= entrada.nextInt();
+        }
         System.out.println("Cuanta capacidad para personas quiere?");
         cap=entrada.nextInt();
         if(opc==1){
             System.out.println("Elija del 1 al 5 la valoracion del hotel");
             val=entrada.nextInt();
-            System.out.println("¿Quiere Piscina?");
+            while(val<=0 || val>5){
+                System.out.println("---Eleccion no valida---");
+                System.out.println("Elija del 1 al 5 la valoracion del hotel");
+                val=entrada.nextInt();
+            }
+            System.out.println("¿Quiere Piscina? si/no");
             rta =entrada.next();
             if(rta.equalsIgnoreCase("si")){
                 piscina= true;
@@ -235,7 +258,7 @@ public class AgenciaGli {
         else if(opc==2){
             System.out.println("Cuantos ambientes quiere");
             amb=entrada.nextInt();
-            System.out.println("¿Quiere piscina?");
+            System.out.println("¿Quiere piscina? si/no");
             rta =entrada.next();
             if(rta.equalsIgnoreCase("si")){
                 piscina= true;
