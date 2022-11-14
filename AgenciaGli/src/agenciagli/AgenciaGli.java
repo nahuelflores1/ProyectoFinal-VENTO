@@ -28,7 +28,10 @@ public class AgenciaGli {//Hecho por Ludi
         Venta v=null;
         ArrayList<Paquete>p=new ArrayList();
         Cliente cliente =new Cliente("","",0,0);
-        Ubicacion u =new Ubicacion("",0); 
+        Ubicacion u =new Ubicacion("",0);
+        
+        
+        
         while(true){
             System.out.println("Has ingresado a agencia Gli");
             cliente = crearCli();
