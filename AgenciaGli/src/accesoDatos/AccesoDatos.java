@@ -46,7 +46,6 @@ public class AccesoDatos {
             System.out.println("Error en la sintaxis SQL");
         }
     }
-    
     public void insertarEmpleado(Empleado emp){
         String sql="call crearEmpleado('"+emp.getNombre()+"', '"+emp.getApellido()+"', "+emp.getSueldo()+");";
         System.out.println(sql);
@@ -107,7 +106,7 @@ public class AccesoDatos {
         }
     }
     
-    public void insertarHsotel(Hostel host){
+    public void insertarHostel(Hostel host){
         String sql="call crearHostel("+host.getCantCamas()+", "+host.getHabitacion()+", "+host.getCapacidad()+", "+host.getPrecio()+");";
         System.out.println(sql);
         try{

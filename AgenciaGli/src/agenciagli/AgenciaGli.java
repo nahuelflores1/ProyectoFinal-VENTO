@@ -3,16 +3,18 @@ package agenciagli;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import accesoDatos.AccesoDatos;
 
 public class AgenciaGli {//Hecho por Ludi
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
+        AccesoDatos AD = new AccesoDatos();
         boolean loop = true;
         int fact = 1;
         int bar = 0;
         int TDF = 0;
         int jj = 0;
-        int dado = (int) Math.floor(Math.random()*4+1);
+        int dado = (int) Math.floor(Math.random()*3+1);
         double Cemple1 = 0;
         double Cemple2 = 0;
         double Cemple3 = 0;
@@ -29,9 +31,6 @@ public class AgenciaGli {//Hecho por Ludi
         ArrayList<Paquete>p=new ArrayList();
         Cliente cliente =new Cliente("","",0,0);
         Ubicacion u =new Ubicacion("",0);
-        
-        
-        
         while(true){
             System.out.println("Has ingresado a agencia Gli");
             cliente = crearCli();
@@ -61,7 +60,6 @@ public class AgenciaGli {//Hecho por Ludi
                 Empleado emple1=new Empleado("Uriel","Ludi",paquete );
                 Empleado emple2=new Empleado("Joaco","Preisinger",paquete );
                 Empleado emple3=new Empleado("Francisco","Tato",paquete );
-                Empleado emple4=new Empleado("Nahuel","Flores",paquete);
                 if(dado == 1){
                     v = new Venta(cliente,emple1,fecha,fact,p);
                     Cemple1=v.getEmple().calcularComision();
@@ -70,6 +68,7 @@ public class AgenciaGli {//Hecho por Ludi
                     STemple2=v.getEmple().sueldoTotal();
                     Cemple3=0;
                     STemple3=v.getEmple().sueldoTotal();
+                    AD.insertarEmpleado(emple1);
                 }
                 else if(dado == 2){
                     v = new Venta(cliente,emple2,fecha,fact,p);
@@ -79,6 +78,7 @@ public class AgenciaGli {//Hecho por Ludi
                     STemple2=v.getEmple().sueldoTotal();
                     Cemple3=0;
                     STemple3=v.getEmple().sueldoTotal();
+                    AD.insertarEmpleado(emple2);
                 }
                 else if(dado == 3){
                     v = new Venta(cliente,emple3,fecha,fact,p);
@@ -88,10 +88,9 @@ public class AgenciaGli {//Hecho por Ludi
                     STemple2=v.getEmple().sueldoTotal();
                     Cemple3=v.getEmple().calcularComision();
                     STemple3=v.getEmple().sueldoTotal();
+                    AD.insertarEmpleado(emple3);
                 }
-                else if(dado==4){
-                    v = new Venta(cliente,emple4,fecha,fact,p);
-                }
+                
                 tS = v.toString();
                 System.out.println(tS);
                 fact++;
@@ -102,6 +101,7 @@ public class AgenciaGli {//Hecho por Ludi
                 }
                 else if(rta.equalsIgnoreCase("no")){
                     loop = false;
+                    AD.insertarVenta(v, paquete);
                 }
                 precioTotal=v.calcularPv();
                 System.out.println("--------------------------------------------");
@@ -125,6 +125,7 @@ public class AgenciaGli {//Hecho por Ludi
     }
     
     public static Cliente crearCli(){
+        AccesoDatos AD = new AccesoDatos();
         Scanner entrada = new Scanner(System.in);
         String nombre;
         String apellido;
@@ -139,10 +140,12 @@ public class AgenciaGli {//Hecho por Ludi
         System.out.println("Ingrese su tel:");
         tel = entrada.nextInt();
         Cliente c = new Cliente(nombre, apellido,dni,tel);
+        AD.insertarCliente(c);
         return c;
     }
     
     public static Ubicacion selUbi(){
+        AccesoDatos AD = new AccesoDatos();
         Scanner entrada = new Scanner(System.in);
         String destino="";
         int distancia=0;
@@ -166,11 +169,13 @@ public class AgenciaGli {//Hecho por Ludi
             distancia=3026;
         }
          Ubicacion u =new Ubicacion(destino,distancia);
+         AD.insertarUbicacion(u);
          return u;
         
     }
     
     public static Transporte selTrans(){
+        AccesoDatos AD = new AccesoDatos();
         Scanner entrada = new Scanner(System.in);
        int cantAsientos=0;
        int id=0;
@@ -199,6 +204,7 @@ public class AgenciaGli {//Hecho por Ludi
                 clase= false;
             }
             t= new Avion(clase,a,8164619,60000,ubi);
+            AD.insertarAvion((Avion) t);
         }
         else if(opc==2){
             System.out.println("¿Quiere coche cama? si/no");
@@ -210,6 +216,7 @@ public class AgenciaGli {//Hecho por Ludi
                 clase= false;
             }
             t= new Micro(clase,a,4535488,30000,ubi);
+            AD.insertarMicro((Micro) t);
         }
         else if(opc==3){
             System.out.println("¿Quiere priemera clase? si/no");
@@ -221,11 +228,13 @@ public class AgenciaGli {//Hecho por Ludi
                 clase= false;
             }
             t = new Tren(clase,a,8164619,15000,ubi);
+            AD.insertarTren((Tren) t);
         }
         return t;
     }
     
     public static Hospedaje  selHos(){
+     AccesoDatos AD = new AccesoDatos();
      Scanner entrada = new Scanner(System.in);
      int habitacion=0;
      int capacidad=0;
@@ -261,6 +270,7 @@ public class AgenciaGli {//Hecho por Ludi
                 piscina= false;
             }
             h=new Hotel(val,piscina,7,cap,5000);
+            AD.insertarHotel((Hotel) h);
         }
         else if(opc==2){
             System.out.println("Cuantos ambientes quiere");
@@ -274,12 +284,14 @@ public class AgenciaGli {//Hecho por Ludi
                 piscina= false;
             }
             h=new Apartamento(amb,piscina,3,cap,3000);
+            AD.insertarApartamento((Apartamento) h);
         }
     
         else if(opc==3){
             System.out.println("Cuantas camas queire?");
             cam=entrada.nextInt();
             h=new Hostel(cam,12,cap,1000);
+            AD.insertarHostel((Hostel) h);
         }
         return h;
     }
