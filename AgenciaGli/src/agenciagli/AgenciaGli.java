@@ -64,12 +64,30 @@ public class AgenciaGli {//Hecho por Ludi
                 Empleado emple4=new Empleado("Nahuel","Flores",paquete);
                 if(dado == 1){
                     v = new Venta(cliente,emple1,fecha,fact,p);
+                    Cemple1=v.getEmple().calcularComision();
+                    STemple1=v.getEmple().sueldoTotal();
+                    Cemple2=0;
+                    STemple2=v.getEmple().sueldoTotal();
+                    Cemple3=0;
+                    STemple3=v.getEmple().sueldoTotal();
                 }
                 else if(dado == 2){
                     v = new Venta(cliente,emple2,fecha,fact,p);
+                    Cemple1=0;
+                    STemple1=v.getEmple().sueldoTotal();
+                    Cemple2=v.getEmple().calcularComision();
+                    STemple2=v.getEmple().sueldoTotal();
+                    Cemple3=0;
+                    STemple3=v.getEmple().sueldoTotal();
                 }
                 else if(dado == 3){
                     v = new Venta(cliente,emple3,fecha,fact,p);
+                    Cemple1=0;
+                    STemple1=v.getEmple().sueldoTotal();
+                    Cemple2=0;
+                    STemple2=v.getEmple().sueldoTotal();
+                    Cemple3=v.getEmple().calcularComision();
+                    STemple3=v.getEmple().sueldoTotal();
                 }
                 else if(dado==4){
                     v = new Venta(cliente,emple4,fecha,fact,p);
@@ -84,18 +102,6 @@ public class AgenciaGli {//Hecho por Ludi
                 }
                 else if(rta.equalsIgnoreCase("no")){
                     loop = false;
-                }
-                if(v.getEmple().getApellido().equalsIgnoreCase("ludi")){
-                    Cemple1 = v.getEmple().calcularComision();
-                    STemple1 = v.getEmple().sueldoTotal();
-                }
-                else if(v.getEmple().getApellido().equalsIgnoreCase("preisinger")){
-                    Cemple2 = v.getEmple().calcularComision();
-                    STemple2 = v.getEmple().sueldoTotal();
-                }
-                else if(v.getEmple().getApellido().equalsIgnoreCase("tato")){
-                    Cemple3 = v.getEmple().calcularComision();
-                    STemple3 = v.getEmple().sueldoTotal();
                 }
                 precioTotal=v.calcularPv();
                 System.out.println("--------------------------------------------");
@@ -238,8 +244,6 @@ public class AgenciaGli {//Hecho por Ludi
             System.out.println("En cual instancia quiere estar? \n1.Hotel \n2.Apartamento\n3.Hostel ");
             opc= entrada.nextInt();
         }
-        System.out.println("Cuanta capacidad para personas quiere?");
-        cap=entrada.nextInt();
         if(opc==1){
             System.out.println("Elija del 1 al 5 la valoracion del hotel");
             val=entrada.nextInt();
