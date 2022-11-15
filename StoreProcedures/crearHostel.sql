@@ -2,5 +2,4 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `crearHostel`(in cantC int, in hab i
 BEGIN
 insert into hotsel(cantCamas)values(cantC);
 insert into hospedaje(hostel_idhostel, habitacion, capacidad, precio)values(hostel_idhostel, hab, cap, pre);
-
 END
